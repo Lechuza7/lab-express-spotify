@@ -10,6 +10,7 @@ module.exports.search = (req, res) => {
     spotifyApi
         .searchArtists(req.query.search)
         .then((data) => {
+            console.log("The received data from the API: ", data.body.artists.items)
             //return res.json(data) --> podemos usar para pintar el json resultante en el navegador, corta el flujo del código por hacer return
             //console.log("The received data from the API: ", data.body); --> lo mismo que la línea anterior pero nos lo saca por consola sin cortar el flujo
             res.render("artist-search-results", { artists: data.body.artists.items })
